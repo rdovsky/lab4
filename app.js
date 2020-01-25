@@ -14,6 +14,8 @@ var hello = require('./routes/hello');
 // var user = require('./routes/user');
 
 var app = express();
+var index = require('./routes/index');
+var project = require('./routes/project');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -37,6 +39,8 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+app.get('/project', project.viewProject);
+app.get('/project/:name', project.viewProject);
 app.get('/hello/:userName', hello.view);
 // Example route
 // app.get('/users', user.list);
